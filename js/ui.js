@@ -4,7 +4,7 @@ class UI{
   constructor(){
     this.profile = document.getElementById('profile');
   }
-
+  /// Display profile in UI
   showProfile(user){
     console.log(user);
     this.profile.innerHTML = `
@@ -20,7 +20,7 @@ class UI{
             <span class="badge badge-success">Followers: ${user.followers}</span>
             <span class="badge badge-info">Following: ${user.following}</span>
             <br><br>
-            <ul class="list-group>
+            <ul class="list-group">
               <li class="list-group-item">Company: ${user.company}</li>
               <li class="list-group-item">Website/Blog: ${user.blog}</li>
               <li class="list-group-item">Location: ${user.location}</li>
@@ -32,5 +32,37 @@ class UI{
       <h3 class="page-heading mb-3">Latest Repos</h3>
       <div id="repos"></div>
     `;
+  }
+  /// Clear Profile
+  clearProfile(){
+    this.profile.innerHTML = '';
+  }
+
+  /// Clear Alert Message
+  clearAlert(){
+    const currentAlert = document.querySelector('.alert');
+    if(currentAlert){
+      currentAlert.remove();
+    }
+  }
+
+
+  /// Show Alert Message
+  showAlert(message, className){
+    // Clear any previous Alert Messages
+    this.clearAlert();
+    /// Create Div
+    const div = document.createElement('div');
+    div.className = className;
+    // Add Text
+    div.appendChild(document.createTextNode(message));
+    // Get Parent
+    const container = document.querySelector('.searchContainer');
+    // Get Search Box
+    const search = document.querySelector('.search');
+    // Insert Alert
+    container.insertBefore(div, search);
+    // Time out to clear alert
+    setTimeout(() => this.clearAlert(),3000);
   }
 }

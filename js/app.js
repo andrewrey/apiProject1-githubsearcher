@@ -21,8 +21,9 @@ searchUser.addEventListener('keyup', (e)=>{
         // Show profile
         ui.showProfile(data.profile);
       })
-      .catch(error => console.log(error));
+      .catch(error => ui.showAlert(error.message, 'alert alert-danger'));
   } else {
     // Clear Profile
+    ui.clearProfile();
   }
 })
