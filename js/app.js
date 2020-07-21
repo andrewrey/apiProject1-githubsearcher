@@ -20,6 +20,8 @@ searchUser.addEventListener('keyup', (e)=>{
       .then(data => {  
         // Show profile
         ui.showProfile(data.profile);
+        // ui.showRepos(data.repos);
+        ui.showRepos(data.repos);
       })
       .catch(error => ui.showAlert(error.message, 'alert alert-danger'));
   } else {
